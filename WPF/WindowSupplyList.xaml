@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPF.WindowSupplyList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:WPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SupplyListViewModel}"
+        Title="WindowLogin" Height="598.421" Width="994.568" WindowStyle="None" WindowStartupLocation="CenterScreen" >
+    <Grid Background="#ffdadada" Margin="0,0,3,3.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="389*"/>
+            <ColumnDefinition Width="151*"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="10,0,10.8,25.2" Background="White" VerticalAlignment="Bottom" Padding="35" CornerRadius="20" Grid.ColumnSpan="2" Height="553">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <StackPanel Margin="-0.2,-25.2,-4.4,-25.4">
+                <TextBlock Text="Trading Company " FontSize="20" FontWeight="Bold" Margin="0 0 0 0"/>
+                <TextBlock Text="Receiving goods" HorizontalAlignment="Right" FontSize="15" FontWeight="Bold" Margin="0 0 0 5"/>
+                <Grid Margin="5 10 5 0">
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,2,63.2,2.4" Content ="Cancel search" Style="{StaticResource MaterialDesignFlatButton}" RenderTransformOrigin="-0.033,0.556" />
+                    <ComboBox x:Name="CBCategoryListSupply" materialDesign:HintAssist.Hint="Chose a category..." ItemsSource="{Binding CategoryName}"  HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,0,0,-0.6" Width="581"/>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="625,2,171.2,2.4" Content ="Searsh" Width="93" RenderTransformOrigin="0.902,0.581" Command="{Binding SearchSupply}" />
+                </Grid>
+
+                <DataGrid x:Name="actiongrid" HorizontalAlignment="Left" Height="290" Margin="0,10,0,0" VerticalAlignment="Top" Width="890" ItemsSource="{Binding SupplyList}" Grid.ColumnSpan="2" AutoGenerateColumns="True" IsReadOnly="True"/>
+
+                <Grid VerticalAlignment="Bottom">
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="20,10,0,-0.4" Content ="Add" Width="110" Height="50" Command ="{Binding showAddSupplyCommand}" />
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,10,20.2,-12.4" Content ="Delete" Height="50" Width="110" Command="{Binding deleteCommand}"/>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,10,20.2,-12.4" Content ="Sort by price" Height="50" Width="115" Command="{Binding sortSupplyCommand}" />
+                </Grid>
+
+                <Button HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,20,0.2,0" Command="{Binding logoutCommand}" Content ="Log Out" Style="{StaticResource MaterialDesignFlatButton}" Height="48" Width="102" />
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
+

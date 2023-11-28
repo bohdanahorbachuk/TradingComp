@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPF.WindowLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:WPF.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="WindowLogin" Height="310" Width="380" WindowStyle="None" WindowStartupLocation="CenterScreen" >
+    <!--<Window.DataContext>
+        <vm:LoginViewModel />
+    </Window.DataContext>-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#ffdadada" Margin="0,0,3.6,-0.2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="389*"/>
+            <ColumnDefinition Width="151*"/>
+        </Grid.ColumnDefinitions>
+        <Border MinWidth="50" Margin="10,10,10,10" Background="White" VerticalAlignment="Center" Padding="35" MaxWidth="500" CornerRadius="20" Grid.ColumnSpan="2">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <StackPanel Height="210" Margin="0,0,-4.8,0">
+                <TextBlock Text="Trading Company " FontSize="20" FontWeight="Bold" Margin="0 0 0 0"/>
+                <TextBlock Text="Authorization" HorizontalAlignment="Right" FontSize="15" FontWeight="Bold" Margin="0 0 0 5"/>
+                <TextBox x:Name="LoginTextBox" materialDesign:HintAssist.Hint="Enter login..." Text="{Binding Login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <PasswordBox x:Name="PasswordTextBox" PasswordChanged="PasswordTextBox_PasswordChanged" materialDesign:HintAssist.Hint="Enter password..." Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+                <Grid Margin="10 15 10 5">
+                    <Button HorizontalAlignment="Right" x:Name="LogInButton" Command="{Binding loginCommand}" Content ="Log In"/>
+                    <Button HorizontalAlignment="Left" x:Name="ExitButton" Command="{Binding exitCommand}" VerticalAlignment="Stretch" Margin="0 0 0 0" Content ="Cancel" Style="{StaticResource MaterialDesignFlatButton}" />
+                </Grid>
+                <Button HorizontalAlignment="Right" Margin="0 0 0 0" Content ="Registration" Style="{StaticResource MaterialDesignFlatButton}"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
