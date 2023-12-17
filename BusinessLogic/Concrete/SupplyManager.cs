@@ -12,10 +12,6 @@ namespace BusinessLogic.Concrete
         private readonly IRolesDAL _rolesDAL;
         private readonly ISupplyDAL _supplyDAL;
         private readonly IPersonDAL _personDAL;
-        private ICategoryDAL object1;
-        private IPersonDAL object2;
-        private IRolesDAL object3;
-        private ISupplyDAL object4;
 
         public SupplyManager(ICategoryDAL categoryDAL, IPersonDAL personDAL, IRolesDAL rolesDAL, ISupplyDAL supply, IPersonDAL person)
         {
@@ -23,14 +19,6 @@ namespace BusinessLogic.Concrete
             _rolesDAL = rolesDAL;
             _supplyDAL = supply;
             _personDAL = person;
-        }
-
-        public SupplyManager(ICategoryDAL object1, IPersonDAL object2, IRolesDAL object3, ISupplyDAL object4)
-        {
-            this.object1 = object1;
-            this.object2 = object2;
-            this.object3 = object3;
-            this.object4 = object4;
         }
 
         public SupplyDTO AddSupply(SupplyDTO supply)
@@ -60,14 +48,14 @@ namespace BusinessLogic.Concrete
 
         public List<SupplyDTO> GetSort() //sort price
         {
-            List<SupplyDTO> price = _supplyDAL.GetAllSupply().OrderBy(p => p.PriceUnit).ToList(); 
+            List<SupplyDTO> price = _supplyDAL.GetAllSupply().OrderBy(p => p.PriceUnit).ToList();
             return price;
         }
 
         public List<string> GetNameCategory()
         {
             List<string> names = new List<string>();
-            foreach(CategoryDTO category in _categoryDAL.GetAllCategory())
+            foreach (CategoryDTO category in _categoryDAL.GetAllCategory())
             {
                 names.Add(category.CategoryName);
             }
@@ -89,7 +77,7 @@ namespace BusinessLogic.Concrete
             return _supplyDAL.GetSupplyById(supplyID);
         }
 
-        public List<SupplyDTO> SearchGoodsByCategory(int id) 
+        public List<SupplyDTO> SearchGoodsByCategory(int id)
         {
             return _supplyDAL.GetSupplyByIdCategory(id);
         }
